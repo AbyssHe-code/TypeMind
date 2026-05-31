@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-container-low": "#f1f3fc",
+                        "on-background": "#181c22",
+                        "on-primary-fixed-variant": "#00458d",
+                        "surface-dim": "#d7dae3",
+                        "on-secondary-container": "#3f5881",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-secondary-fixed": "#001b3d",
+                        "primary": "#005ab4",
+                        "secondary-container": "#b6d0ff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e2eb",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#fefcff",
+                        "on-surface": "#181c22",
+                        "primary-container": "#0a73e0",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary-fixed-dim": "#ffb68c",
+                        "secondary": "#465f88",
+                        "on-surface-variant": "#414753",
+                        "tertiary": "#964400",
+                        "primary-fixed-dim": "#aac7ff",
+                        "surface": "#f9f9ff",
+                        "tertiary-container": "#bd5700",
+                        "secondary-fixed-dim": "#aec7f7",
+                        "surface-container-high": "#e6e8f1",
+                        "surface-tint": "#005db8",
+                        "on-tertiary-fixed-variant": "#763400",
+                        "surface-container-highest": "#e0e2eb",
+                        "on-tertiary-fixed": "#321200",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#aac7ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#2d476f",
+                        "surface-container": "#ebedf7",
+                        "outline-variant": "#c1c6d5",
+                        "on-primary-fixed": "#001b3e",
+                        "background": "#f9f9ff",
+                        "inverse-surface": "#2d3037",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#717785",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eef0fa",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "margin": "24px",
+                        "sm": "8px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-background w-full top-0 sticky flex justify-between items-center px-margin h-14 z-10 border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-xl font-bold text-on-surface">职场人格</span>
+</div>
+</header>
+<main class="px-margin pt-6">
+<!-- Greeting Section -->
+<section class="mb-6 mt-2">
+<h1 class="text-[28px] font-black tracking-tight text-on-surface mb-1">遇到职场难题了？</h1>
+<p class="text-[14px] text-on-surface-variant/80">描述当前情境，AI 帮你读懂复杂关系</p>
+</section>
+<!-- CTA Cards -->
+<section class="grid grid-cols-2 gap-md mb-8">
+<!-- Left Card: Primary -->
+<div class="bg-primary-container rounded-xl p-4 flex flex-col gap-3 shadow-sm active:scale-95 transition-transform duration-150 cursor-pointer" onclick="window.location.href='assessment.html'">
+<div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="edit_note">edit_note</span>
+</div>
+<div>
+<h3 class="font-bold text-on-primary-container text-[15px]">开始测评</h3>
+<p class="text-[11px] text-on-primary-container/80 mt-1">20 题情境测试</p>
+</div>
+</div>
+<!-- Right Card: Secondary -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-3 shadow-sm active:scale-95 transition-transform duration-150 cursor-pointer" onclick="window.location.href='calibration.html'">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface text-[15px]">已知类型</h3>
+<p class="text-[11px] text-on-surface-variant mt-1">直接进入 AI 陪伴</p>
+</div>
+</div>
+</section>
+
+<!-- Daily Insight -->
+<section class="mb-8 relative">
+  <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4 shadow-sm flex items-start gap-4 transition-colors">
+    <div class="w-10 h-10 rounded-full bg-secondary-container/50 text-primary flex items-center justify-center shrink-0 mt-0.5">
+      <span class="material-symbols-outlined text-[20px]">lightbulb</span>
+    </div>
+    <div class="flex-grow pr-6">
+      <h3 class="font-bold text-on-surface text-[14px] mb-1 flex items-center gap-2">
+        今日职场灵感 
+        <span id="quote-type-tag" class="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded font-medium hidden"></span>
+      </h3>
+      <p id="daily-quote-content" class="text-[13px] leading-relaxed text-on-surface-variant transition-opacity duration-300">正在加载你的专属灵感...</p>
+    </div>
+  </div>
+  <button id="btn-refresh-quote" class="absolute top-4 right-4 text-outline hover:text-primary transition-all active:rotate-180 duration-300" aria-label="换一换">
+    <span class="material-symbols-outlined text-[20px]">refresh</span>
+  </button>
+</section>
+
+<!-- 16 Types Gallery -->
+<section class="mb-lg">
+  <div class="mb-4">
+    <h2 class="text-[18px] font-bold text-on-surface">16 型职场人格速览</h2>
+  </div>
+  <div class="flex overflow-x-auto gap-3 pb-2 snap-x hide-scrollbar">
+    <!-- Card 1 -->
+    <div class="snap-start shrink-0 w-[140px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 flex flex-col gap-1 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-secondary-container/50 text-primary flex items-center justify-center font-bold text-[14px] mb-2 tracking-wide">INTJ</div>
+      <h4 class="font-label-md font-bold text-on-surface">建筑师</h4>
+      <p class="text-[11px] leading-tight text-on-surface-variant">独立理性的战略家</p>
+    </div>
+    <!-- Card 2 -->
+    <div class="snap-start shrink-0 w-[140px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 flex flex-col gap-1 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-primary-container/20 text-primary flex items-center justify-center font-bold text-[14px] mb-2 tracking-wide">ENTJ</div>
+      <h4 class="font-label-md font-bold text-on-surface">指挥官</h4>
+      <p class="text-[11px] leading-tight text-on-surface-variant">天生的领导者</p>
+    </div>
+    <!-- Card 3 -->
+    <div class="snap-start shrink-0 w-[140px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 flex flex-col gap-1 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-tertiary-container/20 text-tertiary flex items-center justify-center font-bold text-[14px] mb-2 tracking-wide">INFJ</div>
+      <h4 class="font-label-md font-bold text-on-surface">提倡者</h4>
+      <p class="text-[11px] leading-tight text-on-surface-variant">洞察人心的理想主义</p>
+    </div>
+    <!-- Card 4 -->
+    <div class="snap-start shrink-0 w-[140px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 flex flex-col gap-1 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-error-container/20 text-error flex items-center justify-center font-bold text-[14px] mb-2 tracking-wide">ENFJ</div>
+      <h4 class="font-label-md font-bold text-on-surface">主人公</h4>
+      <p class="text-[11px] leading-tight text-on-surface-variant">充满魅力的领导者</p>
+    </div>
+    <!-- Card 5 -->
+    <div class="snap-start shrink-0 w-[140px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 flex flex-col gap-1 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-surface-variant/50 text-on-surface-variant flex items-center justify-center font-bold text-[14px] mb-2 tracking-wide">ISTJ</div>
+      <h4 class="font-label-md font-bold text-on-surface">物流师</h4>
+      <p class="text-[11px] leading-tight text-on-surface-variant">稳重可靠的执行者</p>
+    </div>
+    <!-- Card 6 -->
+    <div class="snap-start shrink-0 w-[140px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 flex flex-col gap-1 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-surface-variant/50 text-on-surface-variant flex items-center justify-center font-bold text-[14px] mb-2 tracking-wide">ESTJ</div>
+      <h4 class="font-label-md font-bold text-on-surface">总经理</h4>
+      <p class="text-[11px] leading-tight text-on-surface-variant">讲求效率的管理者</p>
+    </div>
+    <!-- Card 7 -->
+    <div class="snap-start shrink-0 w-[140px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 flex flex-col gap-1 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-secondary-container/50 text-primary flex items-center justify-center font-bold text-[14px] mb-2 tracking-wide">INTP</div>
+      <h4 class="font-label-md font-bold text-on-surface">逻辑学家</h4>
+      <p class="text-[11px] leading-tight text-on-surface-variant">创新客观的思考者</p>
+    </div>
+    <!-- Card 8 -->
+    <div class="snap-start shrink-0 w-[140px] bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 flex flex-col gap-1 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-primary-container/20 text-primary flex items-center justify-center font-bold text-[14px] mb-2 tracking-wide">ENTP</div>
+      <h4 class="font-label-md font-bold text-on-surface">辩论家</h4>
+      <p class="text-[11px] leading-tight text-on-surface-variant">充满好奇的思考者</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-20 pb-safe px-4 shadow-lg">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary transition-transform duration-150 active:scale-95" href="index.html">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md">首页</span>
+</a>
+<!-- Assessment -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95 hover:bg-surface-container-low rounded-lg px-2" href="assessment.html">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md">测评</span>
+</a>
+<!-- AI Assistant -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95 hover:bg-surface-container-low rounded-lg px-2" href="chat.html">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md">AI 助手</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95 hover:bg-surface-container-low rounded-lg px-2" href="profile.html">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md">个人</span>
+</a>
+</nav>
+<script type="module">
+    import { supabase } from './src/supabase.js';
+
+    async function checkAuth() {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            window.location.href = 'login.html';
+        }
+    }
+    
+    checkAuth();
+
+    // Quotes Logic
+    let allQuotes = [];
+
+    async function loadQuotes() {
+        const contentEl = document.getElementById('daily-quote-content');
+        
+        try {
+            const { data, error } = await supabase.from('daily_quotes').select('*');
+            if (error) throw error;
+            if (data && data.length > 0) {
+                allQuotes = data;
+                displayQuote(false);
+            }
+        } catch (error) {
+            console.error('Error fetching quotes from Supabase:', error);
+            contentEl.innerText = '与 T 型（思考型）同事沟通时，先说结论并罗列事实，能大幅提升沟通效率。';
+        }
+    }
+
+    function displayQuote(forceRandom = false) {
+        if (allQuotes.length === 0) return;
+
+        const contentEl = document.getElementById('daily-quote-content');
+        const tagEl = document.getElementById('quote-type-tag');
+        
+        contentEl.style.opacity = '0.5';
+        
+        setTimeout(() => {
+            let selectedQuote;
+            if (!forceRandom) {
+                const savedType = localStorage.getItem('user_mbti');
+                if (savedType) {
+                    selectedQuote = allQuotes.find(q => q.mbti_type.toUpperCase() === savedType.toUpperCase());
+                }
+            }
+            
+            if (!selectedQuote) {
+                // Random select
+                const randomIndex = Math.floor(Math.random() * allQuotes.length);
+                selectedQuote = allQuotes[randomIndex];
+            }
+            
+            contentEl.innerText = selectedQuote.content;
+            tagEl.innerText = selectedQuote.mbti_type;
+            tagEl.classList.remove('hidden');
+            
+            contentEl.style.opacity = '1';
+        }, 150);
+    }
+
+    document.getElementById('btn-refresh-quote').addEventListener('click', () => {
+        displayQuote(true);
+    });
+
+    loadQuotes();
+</script>
+</body></html>

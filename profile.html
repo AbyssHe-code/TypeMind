@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>职场人格 - 个人档案</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  body { min-height: max(884px, 100dvh); }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      colors: {
+        "tertiary-fixed-dim": "#ffb68c", "on-tertiary": "#ffffff",
+        "on-secondary-fixed": "#001b3d", "outline-variant": "#c1c6d5",
+        "on-secondary-container": "#3f5881", "error": "#ba1a1a",
+        "primary-fixed": "#d6e3ff", "surface-tint": "#005db8",
+        "surface-dim": "#d7dae3", "surface-container-high": "#e6e8f1",
+        "tertiary-container": "#bd5700", "inverse-on-surface": "#eef0fa",
+        "surface-container-lowest": "#ffffff", "on-primary-container": "#fefcff",
+        "primary-container": "#0a73e0", "on-tertiary-container": "#fffbff",
+        "secondary": "#465f88", "on-error-container": "#93000a",
+        "outline": "#717785", "tertiary": "#964400",
+        "on-secondary-fixed-variant": "#2d476f", "on-background": "#181c22",
+        "surface-variant": "#e0e2eb", "surface-container-low": "#f1f3fc",
+        "on-primary-fixed-variant": "#00458d", "on-error": "#ffffff",
+        "background": "#f9f9ff", "on-surface-variant": "#414753",
+        "surface-container": "#ebedf7", "secondary-container": "#b6d0ff",
+        "inverse-surface": "#2d3037", "surface-bright": "#f9f9ff",
+        "on-primary": "#ffffff", "primary-fixed-dim": "#aac7ff",
+        "inverse-primary": "#aac7ff", "on-secondary": "#ffffff",
+        "primary": "#005ab4", "error-container": "#ffdad6",
+        "on-surface": "#181c22", "surface-container-highest": "#e0e2eb",
+        "surface": "#f9f9ff", "secondary-fixed-dim": "#aec7f7",
+        "secondary-fixed": "#d6e3ff", "on-tertiary-fixed": "#321200",
+        "tertiary-fixed": "#ffdbc9"
+      },
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+      spacing: { "gutter": "16px", "md": "16px", "margin": "24px", "sm": "8px", "xl": "32px", "base": "8px", "xs": "4px", "lg": "24px" },
+      fontSize: {
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+        "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.5px", fontWeight: "500" }],
+        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+      }
+    }}
+  }
+</script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+
+<!-- Top App Bar -->
+<header class="bg-background text-primary font-headline text-headline w-full top-0 sticky flex justify-center items-center px-margin h-14 w-full z-10">
+  <h1 class="font-headline-md text-headline-md font-bold text-primary">职场人格</h1>
+</header>
+
+<main class="max-w-md mx-auto">
+  <!-- Hero Section: MBTI Badge -->
+  <section class="px-margin pt-8 pb-10 relative overflow-hidden">
+    <div class="relative z-10">
+      <div id="hero-type" class="text-[64px] font-black text-primary leading-none tracking-tighter">--</div>
+      <div id="hero-name" class="font-headline-md text-[18px] font-semibold text-primary mt-1">加载中…</div>
+      <p id="hero-desc" class="font-body-md text-[13px] text-on-surface-variant mt-3 max-w-[200px]"></p>
+      <!-- Not-yet-assessed state -->
+      <div id="no-result-hint" class="hidden mt-4">
+        <p class="text-body-md text-on-surface-variant mb-3">完成 MBTI 职场测评，建立你的专属档案</p>
+        <button onclick="window.location.href='assessment.html'"
+          class="px-4 py-2 bg-primary text-on-primary font-bold rounded-lg text-[14px] active:scale-95 transition-transform">
+          立即测评 →
+        </button>
+      </div>
+      <!-- View Details Button -->
+      <div id="view-details-container" class="hidden mt-4">
+        <button onclick="window.location.href='result.html'" class="px-4 py-2 border border-primary text-primary font-bold rounded-lg text-[14px] active:scale-95 transition-transform flex items-center justify-center gap-1">
+          <span class="material-symbols-outlined text-[18px]">visibility</span>
+          查看详情
+        </button>
+      </div>
+    </div>
+    <!-- Decorative rings -->
+    <div class="absolute top-4 -right-12 w-48 h-48 opacity-20 pointer-events-none">
+      <div class="absolute inset-0 border-[1px] border-primary rounded-full"></div>
+      <div class="absolute inset-4 border-[1px] border-primary rounded-full"></div>
+      <div class="absolute inset-8 border-[1px] border-primary rounded-full"></div>
+      <div class="absolute inset-12 border-[1px] border-primary rounded-full"></div>
+      <div class="absolute inset-16 border-[1px] border-primary rounded-full"></div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="w-full h-[1px] bg-[#c5d3f0]"></div>
+
+  <!-- Section: Retake Assessment -->
+  <section class="mt-8 px-margin">
+    <button id="retake-btn"
+      class="w-full h-14 bg-surface-container-low border border-primary text-primary font-bold rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+      <span class="material-symbols-outlined">refresh</span>
+      重新评测
+    </button>
+  </section>
+
+  <!-- Section: Colleague Archives -->
+  <section class="mt-8">
+    <h2 class="font-label-md text-label-md text-on-surface-variant px-margin mb-4">我的同事档案</h2>
+    <div id="colleague-list" class="flex gap-4 overflow-x-auto px-margin hide-scrollbar pb-2">
+      <!-- Add Button -->
+      <div id="add-colleague-btn" class="flex-shrink-0 w-32 border-2 border-dashed border-outline-variant flex flex-col items-center justify-center rounded-xl p-4 cursor-pointer hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined text-outline mb-1">add</span>
+        <span class="text-outline text-[12px]">添加同事</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logout Button -->
+  <div class="px-margin mt-6">
+    <button id="logout-btn"
+      class="w-full h-14 bg-primary text-on-primary font-bold rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+      <span class="material-symbols-outlined">logout</span>退出登录
+    </button>
+  </div>
+</main>
+
+<!-- Logout Modal -->
+<div id="logout-modal" class="fixed inset-0 z-[101] bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-surface w-full max-w-sm rounded-2xl p-6 shadow-xl">
+    <h3 class="font-headline-md text-xl font-bold mb-4">确认退出登录？</h3>
+    <div class="flex gap-3">
+      <button id="cancel-logout" class="flex-1 py-2.5 rounded-xl border border-outline-variant text-on-surface font-bold hover:bg-surface-container-low transition-colors">取消</button>
+      <button id="confirm-logout" class="flex-1 py-2.5 rounded-xl bg-primary text-on-primary font-bold hover:opacity-90 transition-opacity">确认</button>
+    </div>
+  </div>
+</div>
+
+<!-- Retake Confirm Modal -->
+<div id="retake-modal" class="fixed inset-0 z-[101] bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-surface w-full max-w-sm rounded-2xl p-6 shadow-xl">
+    <h3 class="font-headline-md text-xl font-bold mb-2">确认重新评测？</h3>
+    <p class="text-body-md text-on-surface-variant mb-4">重新评测将覆盖你当前的 MBTI 结果，此操作不可恢复。</p>
+    <div class="flex gap-3">
+      <button id="cancel-retake" class="flex-1 py-2.5 rounded-xl border border-outline-variant text-on-surface font-bold hover:bg-surface-container-low transition-colors">取消</button>
+      <button id="confirm-retake" class="flex-1 py-2.5 rounded-xl bg-primary text-on-primary font-bold hover:opacity-90 transition-opacity">确认重测</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant/30 flex justify-around items-center h-20 pb-safe px-4">
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-lg" href="index.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0;">home</span>
+    <span class="font-label text-label-md mt-1">首页</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-lg" href="assessment.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0;">assignment</span>
+    <span class="font-label text-label-md mt-1">测评</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-lg" href="chat.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0;">psychology</span>
+    <span class="font-label text-label-md mt-1">AI 助手</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-primary font-medium hover:bg-surface-container-high transition-colors p-2 rounded-lg" href="profile.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">person</span>
+    <span class="font-label text-label-md mt-1">个人</span>
+  </a>
+</nav>
+
+<!-- Add Colleague Modal -->
+<div id="add-modal" class="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-surface w-full max-w-sm rounded-2xl p-6 shadow-xl">
+    <h3 class="font-headline-md text-xl font-bold mb-4">添加同事</h3>
+    <div class="space-y-4 mb-6">
+      <div>
+        <label class="block text-label-md text-on-surface-variant mb-1">姓名</label>
+        <input type="text" id="colleague-name" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-body-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" placeholder="输入姓名">
+      </div>
+      <div>
+        <label class="block text-label-md text-on-surface-variant mb-1">MBTI (可选)</label>
+        <input type="text" id="colleague-mbti" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-body-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" placeholder="例如：ESTJ">
+      </div>
+      <div>
+        <label class="block text-label-md text-on-surface-variant mb-1">职位 (可选)</label>
+        <input type="text" id="colleague-role" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-body-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" placeholder="例如：产品经理">
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <button id="cancel-add-btn" class="flex-1 py-2.5 rounded-xl border border-outline-variant text-on-surface font-bold">取消</button>
+      <button id="save-add-btn" class="flex-1 py-2.5 rounded-xl bg-primary text-on-primary font-bold">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Colleague Confirm Modal -->
+<div id="delete-colleague-modal" class="fixed inset-0 z-[102] bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-surface w-full max-w-sm rounded-2xl p-6 shadow-xl">
+    <h3 class="font-headline-md text-xl font-bold mb-2">确认删除同事？</h3>
+    <p id="delete-colleague-msg" class="text-body-md text-on-surface-variant mb-4">删除后将无法恢复。</p>
+    <div class="flex gap-3">
+      <button id="cancel-delete-colleague" class="flex-1 py-2.5 rounded-xl border border-outline-variant text-on-surface font-bold hover:bg-surface-container-low transition-colors">取消</button>
+      <button id="confirm-delete-colleague" class="flex-1 py-2.5 rounded-xl bg-primary text-on-primary font-bold hover:opacity-90 transition-opacity">确认删除</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { supabase } from './src/supabase.js';
+
+const TYPE_NAMES = {
+  INTJ:'战略家', INTP:'逻辑学家', ENTJ:'指挥官', ENTP:'辩论家',
+  INFJ:'提倡者', INFP:'调停者', ENFJ:'主人公', ENFP:'竞选者',
+  ISTJ:'物流师', ISFJ:'守护者', ESTJ:'总经理', ESFJ:'执政官',
+  ISTP:'鉴赏家', ISFP:'探险家', ESTP:'企业家', ESFP:'表演者'
+};
+const TYPE_DESC = {
+  INTJ:'你比别人更早看见终点，却常常一个人走在路上。',
+  INTP:'你活在想法的迷宫里，出口比别人想象的更多。',
+  ENTJ:'你天生知道如何让系统运转——以及如何让人们跟上你的节奏。',
+  ENTP:'你永远能找到反例，但这正是你让世界变得更聪明的方式。',
+  INFJ:'你能看见别人看不见的模式，也背负着别人感受不到的重量。',
+  INFP:'你用内心的罗盘导航，哪怕地图上根本没有这条路。',
+  ENFJ:'你是别人故事里的催化剂，推动他们成为更好的自己。',
+  ENFP:'你的热情是会传染的，你的可能性是无限的。',
+  ISTJ:'你用可靠性构建信任，用系统性赢得尊重。',
+  ISFJ:'你默默守护着身边每一个人，虽然他们不总是看见。',
+  ESTJ:'你知道事情该怎么做，也有勇气把它说出来并执行到底。',
+  ESFJ:'你是把人凝聚在一起的那股力量。',
+  ISTP:'你用最少的动作解决最复杂的问题，然后移向下一个。',
+  ISFP:'你用行动表达你的价值观，而不是用语言。',
+  ESTP:'你活在当下，快速行动，让规则为你服务。',
+  ESFP:'你把每个场景变成舞台，把每个人变成主角。'
+};
+
+// ── Auth check ──────────────────────────────────────────
+const { data: { user } } = await supabase.auth.getUser();
+if (!user) { window.location.href = 'login.html'; }
+
+// ── Load profile ─────────────────────────────────────────
+const { data: profile } = await supabase
+  .from('user_profiles')
+  .select('mbti_type, dominant_function, calibration_result')
+  .eq('id', user.id)
+  .single();
+
+renderHero(profile);
+
+function renderHero(profile) {
+  const heroType = document.getElementById('hero-type');
+  const heroName = document.getElementById('hero-name');
+  const heroDesc = document.getElementById('hero-desc');
+  const noHint   = document.getElementById('no-result-hint');
+
+  if (!profile?.mbti_type) {
+    heroType.textContent = '?';
+    heroName.textContent = '尚未完成测评';
+    heroDesc.textContent = '';
+    noHint.classList.remove('hidden');
+    return;
+  }
+
+  const type = profile.mbti_type;
+  const dominant = profile.dominant_function;
+
+  // Display: "INTJ" or "INTJ · Ni" if calibrated
+  heroType.textContent = dominant ? `${type} · ${dominant}` : type;
+  heroType.style.fontSize = dominant ? '42px' : '64px'; // shrink if longer
+  heroName.textContent = TYPE_NAMES[type] || type;
+  heroDesc.textContent = TYPE_DESC[type] || '';
+  
+  // Show the view details button
+  document.getElementById('view-details-container').classList.remove('hidden');
+}
+
+// ── Retake assessment ────────────────────────────────────
+  // Retake button → show confirm modal
+  const retakeBtn   = document.getElementById('retake-btn');
+  const retakeModal = document.getElementById('retake-modal');
+  const cancelRetake  = document.getElementById('cancel-retake');
+  const confirmRetake = document.getElementById('confirm-retake');
+
+  retakeBtn?.addEventListener('click', () => retakeModal.classList.remove('hidden'));
+  cancelRetake?.addEventListener('click', () => retakeModal.classList.add('hidden'));
+  confirmRetake?.addEventListener('click', async () => {
+    confirmRetake.disabled = true;
+    confirmRetake.textContent = '处理中…';
+    // Clear all assessment fields
+    const { error } = await supabase.from('user_profiles').upsert({
+      id: user.id,
+      mbti_type: null,
+      mbti_scores: null,
+      dominant_function: null,
+      calibration_result: null,
+      calibration_answers: null,
+      assessment_source: null,
+      updated_at: new Date().toISOString()
+    }, { onConflict: 'id' });
+
+    if (error) {
+      alert('操作失败，请重试');
+      confirmRetake.disabled = false;
+      confirmRetake.textContent = '确认重测';
+    } else {
+      window.location.href = 'assessment.html';
+    }
+  });
+
+  // ── Logout ─────────────────────────────────────────────
+  const logoutBtn   = document.getElementById('logout-btn');
+  const logoutModal = document.getElementById('logout-modal');
+  const cancelLogout  = document.getElementById('cancel-logout');
+  const confirmLogout = document.getElementById('confirm-logout');
+
+  logoutBtn?.addEventListener('click', () => logoutModal.classList.remove('hidden'));
+  cancelLogout?.addEventListener('click', () => logoutModal.classList.add('hidden'));
+  confirmLogout?.addEventListener('click', async () => {
+    try {
+      const { error } = await Promise.race([
+        supabase.auth.signOut(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 7000))
+      ]);
+      if (error) throw error;
+    } catch (e) {
+      console.warn('Sign out warning:', e.message);
+    } finally {
+      window.location.href = 'login.html';
+    }
+  });
+
+  // ── Add colleague ──────────────────────────────────────
+  const MAX_COLLEAGUES = 5;
+  const addBtn        = document.getElementById('add-colleague-btn');
+  const modal         = document.getElementById('add-modal');
+  const cancelBtn     = document.getElementById('cancel-add-btn');
+  const saveBtn       = document.getElementById('save-add-btn');
+  const colleagueList = document.getElementById('colleague-list');
+
+  // Delete confirm modal logic
+  const deleteModal   = document.getElementById('delete-colleague-modal');
+  const deleteMsg     = document.getElementById('delete-colleague-msg');
+  const cancelDelete  = document.getElementById('cancel-delete-colleague');
+  const confirmDelete = document.getElementById('confirm-delete-colleague');
+
+  function showDeleteConfirm(name) {
+    return new Promise((resolve) => {
+      deleteMsg.textContent = `确定删除同事「${name}」的档案吗？删除后将无法恢复。`;
+      deleteModal.classList.remove('hidden');
+
+      const onConfirm = () => { cleanup(); resolve(true); };
+      const onCancel  = () => { cleanup(); resolve(false); };
+      function cleanup() {
+        confirmDelete.removeEventListener('click', onConfirm);
+        cancelDelete.removeEventListener('click', onCancel);
+        deleteModal.classList.add('hidden');
+      }
+
+      confirmDelete.addEventListener('click', onConfirm);
+      cancelDelete.addEventListener('click', onCancel);
+    });
+  }
+
+  function clearModalInputs() {
+    document.getElementById('colleague-name').value = '';
+    document.getElementById('colleague-mbti').value = '';
+    document.getElementById('colleague-role').value = '';
+  }
+
+  function renderColleagueCard(c) {
+    const card = document.createElement('div');
+    card.className = 'colleague-card flex-shrink-0 w-44 bg-surface-container-lowest border border-surface-variant p-4 rounded-xl relative';
+    card.dataset.id = c.id;
+    card.innerHTML = `
+      <button class="delete-colleague-btn absolute top-2 right-2 w-6 h-6 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-error/20 transition-colors" title="删除">
+        <span class="material-symbols-outlined text-[14px] text-on-surface-variant hover:text-error">close</span>
+      </button>
+      <div class="flex items-center justify-between mb-2 pr-6">
+        <span class="font-body-lg font-bold truncate">${c.name}</span>
+        <span class="bg-secondary-container text-on-secondary-fixed-variant px-2 py-0.5 rounded-full text-[10px] font-bold ml-1 flex-shrink-0">${c.mbti_type || '未知'}</span>
+      </div>
+      <div class="text-on-surface-variant text-[12px] mb-2">${c.role || '同事'}</div>
+      <p class="text-tertiary text-[11px] leading-relaxed">快去和 TA 进行 AI 对话吧</p>`;
+    // Insert before the add button
+    colleagueList.insertBefore(card, addBtn);
+
+    // Delete handler
+    card.querySelector('.delete-colleague-btn').addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const confirmed = await showDeleteConfirm(c.name);
+      if (!confirmed) return;
+      const { error } = await supabase.from('colleague_profiles').delete().eq('id', c.id);
+      if (error) { alert('删除失败，请重试'); console.error(error); return; }
+      card.remove();
+      updateAddBtnVisibility();
+    });
+  }
+
+  function updateAddBtnVisibility() {
+    const currentCount = colleagueList.querySelectorAll('.colleague-card').length;
+    if (currentCount >= MAX_COLLEAGUES) {
+      addBtn.classList.add('hidden');
+    } else {
+      addBtn.classList.remove('hidden');
+    }
+  }
+
+  // Load existing colleagues from DB
+  const { data: colleagues } = await supabase
+    .from('colleague_profiles')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: true });
+
+  if (colleagues && colleagues.length > 0) {
+    colleagues.forEach(c => renderColleagueCard(c));
+  }
+  updateAddBtnVisibility();
+
+  // Open modal
+  addBtn?.addEventListener('click', () => {
+    const currentCount = colleagueList.querySelectorAll('.colleague-card').length;
+    if (currentCount >= MAX_COLLEAGUES) {
+      alert(`最多只能添加 ${MAX_COLLEAGUES} 个同事档案`);
+      return;
+    }
+    modal.classList.remove('hidden');
+  });
+
+  // Cancel
+  cancelBtn?.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    clearModalInputs();
+  });
+
+  // Save
+  saveBtn?.addEventListener('click', async () => {
+    const name = document.getElementById('colleague-name').value.trim();
+    const mbti = document.getElementById('colleague-mbti').value.trim().toUpperCase() || '未知';
+    const role = document.getElementById('colleague-role').value.trim() || '同事';
+
+    if (!name) { alert('请输入同事姓名'); return; }
+
+    // Double-check count
+    const currentCount = colleagueList.querySelectorAll('.colleague-card').length;
+    if (currentCount >= MAX_COLLEAGUES) {
+      alert(`最多只能添加 ${MAX_COLLEAGUES} 个同事档案`);
+      modal.classList.add('hidden');
+      clearModalInputs();
+      return;
+    }
+
+    // Validate MBTI format if provided
+    const validMbti = /^[A-Z]{4}$/.test(mbti);
+    const finalMbti = validMbti ? mbti : '未知';
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = '保存中…';
+
+    const { data, error } = await supabase
+      .from('colleague_profiles')
+      .insert({
+        user_id: user.id,
+        name: name,
+        mbti_type: finalMbti,
+        role: role
+      })
+      .select()
+      .single();
+
+    saveBtn.disabled = false;
+    saveBtn.textContent = '保存';
+
+    if (error) {
+      alert('保存失败，请重试');
+      console.error('Colleague save error:', error);
+      return;
+    }
+
+    renderColleagueCard(data);
+    updateAddBtnVisibility();
+    modal.classList.add('hidden');
+    clearModalInputs();
+  });
+
+</script>
+</body></html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .key-active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Smooth typing indicator animation */
+        @keyframes typing-bounce {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-4px); opacity: 1; }
+        }
+        .dot-pulse {
+            animation: typing-bounce 1.2s infinite ease-in-out;
+        }
+        .dot-1 { animation-delay: 0s; }
+        .dot-2 { animation-delay: 0.2s; }
+        .dot-3 { animation-delay: 0.4s; }
+
+        /* Breath effect for focused input */
+        @keyframes input-glow-breath {
+            0%, 100% { border-color: #2665fd; box-shadow: 0 0 4px rgba(38, 101, 253, 0.3); }
+            50% { border-color: #4a80ff; box-shadow: 0 0 12px rgba(38, 101, 253, 0.6); }
+        }
+        .input-glow-active {
+            animation: input-glow-breath 3s infinite ease-in-out;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .dot-pulse, .input-glow-active {
+                animation: none !important;
+            }
+            .dot-pulse {
+                opacity: 0.7;
+            }
+        }
+        
+        .ai-avatar-gradient {
+            background: linear-gradient(135deg, #005ab4 0%, #0a73e0 100%);
+        }
+        
+        .chat-container {
+            height: calc(100vh - 160px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#ebedf7",
+                        "secondary-container": "#b6d0ff",
+                        "inverse-surface": "#2d3037",
+                        "on-tertiary-fixed-variant": "#763400",
+                        "background": "#f9f9ff",
+                        "on-surface-variant": "#414753",
+                        "on-secondary-fixed-variant": "#2d476f",
+                        "on-background": "#181c22",
+                        "surface-variant": "#e0e2eb",
+                        "surface-container-low": "#f1f3fc",
+                        "on-primary-fixed-variant": "#00458d",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#aec7f7",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-surface": "#181c22",
+                        "surface-container-highest": "#e0e2eb",
+                        "surface": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "primary": "#005ab4",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#321200",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-primary-fixed": "#001b3e",
+                        "primary-fixed-dim": "#aac7ff",
+                        "inverse-primary": "#aac7ff",
+                        "surface-tint": "#005db8",
+                        "surface-dim": "#d7dae3",
+                        "surface-container-high": "#e6e8f1",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary-container": "#3f5881",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb68c",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001b3d",
+                        "outline-variant": "#c1c6d5",
+                        "outline": "#717785",
+                        "tertiary": "#964400",
+                        "primary-container": "#0a73e0",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary": "#465f88",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fefcff",
+                        "tertiary-container": "#bd5700",
+                        "inverse-on-surface": "#eef0fa",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "md": "16px",
+                        "margin": "24px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background flex flex-col h-screen overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-margin h-14 w-full bg-background sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<button class="transition-opacity duration-200 hover:opacity-80" onclick="window.history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AI 助手</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="transition-opacity duration-200 hover:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+</button>
+<button class="transition-opacity duration-200 hover:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Chat Canvas -->
+<main class="flex-1 overflow-y-auto px-margin py-lg chat-container flex flex-col gap-lg">
+<!-- AI Message -->
+<div class="flex items-start gap-3 max-w-[85%]">
+<div class="w-7 h-7 ai-avatar-gradient rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-white">psychology</span>
+</div>
+<div class="bg-surface-container-high rounded-xl rounded-tl-none p-lg shadow-sm border border-outline-variant/30">
+<p class="font-body-md text-body-md text-on-surface">您的专属职场 AI 助手即将上线，敬请期待……</p>
+</div>
+</div>
+
+<!-- Scenario Grid -->
+<section class="mt-4">
+<h2 class="font-label-md text-[11px] tracking-[0.1em] uppercase text-on-surface-variant mb-4">选择一个场景，立即开始</h2>
+<div class="grid grid-cols-2 gap-md">
+<!-- Scenario 1 -->
+<div class="bg-surface-container-low border border-transparent rounded-lg p-md min-h-[120px] flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-default">
+<span class="text-xl">⚡</span>
+<h4 class="font-label-md font-bold text-on-surface">刚刚发生了一件事</h4>
+<p class="text-[12px] leading-tight text-on-surface-variant line-clamp-2">情绪还热的时候先说出来</p>
+</div>
+<!-- Scenario 2 -->
+<div class="bg-surface-container-low border border-transparent rounded-lg p-md min-h-[120px] flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-default">
+<span class="text-xl">🤝</span>
+<h4 class="font-label-md font-bold text-on-surface">和某人总是谈不拢</h4>
+<p class="text-[12px] leading-tight text-on-surface-variant line-clamp-2">AI 帮你读懂他的行为逻辑</p>
+</div>
+<!-- Scenario 3 -->
+<div class="bg-surface-container-low border border-transparent rounded-lg p-md min-h-[120px] flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-default">
+<span class="text-xl">🗣️</span>
+<h4 class="font-label-md font-bold text-on-surface">不知道怎么开口</h4>
+<p class="text-[12px] leading-tight text-on-surface-variant line-clamp-2">有话想说但不知怎么表达</p>
+</div>
+<!-- Scenario 4 -->
+<div class="bg-surface-container-low border border-transparent rounded-lg p-md min-h-[120px] flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-default">
+<span class="text-xl">😩</span>
+<h4 class="font-label-md font-bold text-on-surface">在这个环境里很耗</h4>
+<p class="text-[12px] leading-tight text-on-surface-variant line-clamp-2">找到你与环境的适配问题</p>
+</div>
+<!-- Scenario 5 -->
+<div class="bg-surface-container-low border border-transparent rounded-lg p-md min-h-[120px] flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-default">
+<span class="text-xl">📣</span>
+<h4 class="font-label-md font-bold text-on-surface">想推动一件事推不动</h4>
+<p class="text-[12px] leading-tight text-on-surface-variant line-clamp-2">项目卡壳、想法被忽视</p>
+</div>
+<!-- Scenario 6 -->
+<div class="bg-surface-container-low border border-transparent rounded-lg p-md min-h-[120px] flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-default">
+<span class="text-xl">🔄</span>
+<h4 class="font-label-md font-bold text-on-surface">反复发生同一类问题</h4>
+<p class="text-[12px] leading-tight text-on-surface-variant line-clamp-2">找到你的行为模式</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Input Area (Active State) -->
+<section class="bg-surface-container border-t border-outline-variant/20 p-md flex flex-col gap-md">
+<div class="flex items-end gap-md">
+<button class="mb-1 transition-opacity hover:opacity-70">
+<span class="material-symbols-outlined text-on-surface-variant">add_circle</span>
+</button>
+<div class="flex-1 bg-surface-container-lowest border-2 rounded-xl px-lg py-sm min-h-[44px] shadow-sm input-glow-active transition-all duration-300">
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">输入消息...</p>
+</div>
+<button class="w-11 h-11 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</section>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant/30 flex justify-around items-center h-20 pb-safe px-4">
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-lg" href="index.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0;">home</span>
+    <span class="font-label text-label-md mt-1">首页</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-lg" href="assessment.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0;">assignment</span>
+    <span class="font-label text-label-md mt-1">测评</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-primary font-medium hover:bg-surface-container-high transition-colors p-2 rounded-lg" href="chat.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">psychology</span>
+    <span class="font-label text-label-md mt-1">AI 助手</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-lg" href="profile.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0;">person</span>
+    <span class="font-label text-label-md mt-1">个人</span>
+  </a>
+</nav>
+<script>
+        // Micro-interaction for typing simulation
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.chat-container');
+            container.scrollTop = container.scrollHeight;
+        });
+    </script>
+</body></html>

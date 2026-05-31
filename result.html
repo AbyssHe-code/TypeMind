@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>职场人格 - 测试结果</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      colors: {
+        "outline-variant": "#c1c6d5", "inverse-surface": "#2d3037", "surface-dim": "#d7dae3",
+        "secondary": "#465f88", "on-surface": "#181c22", "on-surface-variant": "#414753",
+        "on-secondary": "#ffffff", "surface-container": "#ebedf7", "outline": "#717785",
+        "on-secondary-container": "#3f5881", "on-primary-container": "#fefcff",
+        "surface": "#f9f9ff", "primary-fixed": "#d6e3ff", "secondary-container": "#b6d0ff",
+        "surface-container-lowest": "#ffffff", "primary-fixed-dim": "#aac7ff",
+        "on-primary": "#ffffff", "inverse-on-surface": "#eef0fa", "surface-variant": "#e0e2eb",
+        "background": "#f9f9ff", "on-background": "#181c22",
+        "primary-container": "#0a73e0", "on-tertiary": "#ffffff",
+        "surface-container-highest": "#e0e2eb", "surface-container-low": "#f1f3fc",
+        "surface-container-high": "#e6e8f1", "on-primary-fixed-variant": "#00458d",
+        "tertiary": "#964400", "primary": "#005ab4", "error": "#ba1a1a"
+      },
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+      spacing: { "sm": "8px", "margin": "24px", "xl": "32px", "md": "16px", "base": "8px", "lg": "24px", "xs": "4px", "gutter": "16px" },
+      fontSize: {
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.5px", fontWeight: "500" }],
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }]
+      }
+    }}
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .hero-gradient { background: radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, transparent 70%), linear-gradient(to right, #dce8ff 0%, #e8e0ff 100%); }
+  .custom-shadow { box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05); }
+  body { min-height: max(884px, 100dvh); }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md pb-32">
+
+<!-- Loading -->
+<div id="loading-screen" class="fixed inset-0 bg-background flex items-center justify-center z-50">
+  <div class="w-10 h-10 border-4 border-primary-container border-t-transparent rounded-full animate-spin"></div>
+</div>
+
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-background flex justify-center items-center px-margin h-14">
+  <h1 class="font-headline-md text-headline-md font-bold text-primary">职场人格</h1>
+</header>
+
+<main class="w-full max-w-md mx-auto">
+  <!-- Hero Card -->
+  <section class="hero-gradient w-full h-[266px] flex flex-col justify-end p-8 relative overflow-hidden">
+    <div class="relative z-10">
+      <h2 id="hero-type" class="text-[64pt] font-black text-white/90 leading-none tracking-tight">--</h2>
+      <h3 id="hero-name" class="text-[22pt] font-semibold text-white/95 mt-2">加载中</h3>
+      <p id="hero-desc" class="text-[13pt] text-secondary italic mt-2 max-w-[280px] leading-snug"></p>
+      <div class="w-[40pt] h-[2px] bg-[#3f51b5] mt-4"></div>
+    </div>
+    <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/20 blur-3xl"></div>
+  </section>
+
+  <div class="px-margin space-y-8">
+    <!-- 维度分布 -->
+    <section>
+      <h4 class="text-[10pt] uppercase text-tertiary font-bold pt-4 tracking-widest">维度分布</h4>
+      <div id="dim-bars" class="mt-4 bg-surface-container-lowest border border-[#e0e0e0] rounded-xl p-md custom-shadow space-y-6">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- 认知功能栈 -->
+    <section>
+      <h4 class="text-[10pt] uppercase text-tertiary font-bold tracking-widest">认知功能栈</h4>
+      <div id="func-stack" class="mt-4 bg-surface-container-lowest border border-[#e0e0e0] rounded-xl p-md custom-shadow">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-8 text-center">
+      <button class="w-full h-[56px] bg-[#3f51b5] text-white font-bold rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform" onclick="window.location.href='chat.html'">
+        开始 AI 职场陪伴 →
+      </button>
+      <p class="text-[10pt] text-tertiary mt-2">AI 会记住你的类型，越用越懂你</p>
+    </section>
+  </div>
+</main>
+
+<!-- Bottom Nav -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface flex justify-around items-center h-20 pb-safe px-4 border-t border-outline-variant/30">
+  <a class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg" href="index.html"><span class="material-symbols-outlined">home</span><span class="font-label text-label-md">首页</span></a>
+  <a class="flex flex-col items-center justify-center text-primary font-medium p-2 rounded-lg" href="assessment.html"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">assignment</span><span class="font-label text-label-md">测评</span></a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg" href="chat.html"><span class="material-symbols-outlined">psychology</span><span class="font-label text-label-md">AI 助手</span></a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-lg" href="profile.html"><span class="material-symbols-outlined">person</span><span class="font-label text-label-md">个人</span></a>
+</nav>
+
+<script type="module">
+import { supabase } from './src/supabase.js';
+
+// ── Data maps ─────────────────────────────────────────────
+const TYPE_NAMES = {
+  INTJ:'战略家', INTP:'逻辑学家', ENTJ:'指挥官', ENTP:'辩论家',
+  INFJ:'提倡者', INFP:'调停者', ENFJ:'主人公', ENFP:'竞选者',
+  ISTJ:'物流师', ISFJ:'守护者', ESTJ:'总经理', ESFJ:'执政官',
+  ISTP:'鉴赏家', ISFP:'探险家', ESTP:'企业家', ESFP:'表演者'
+};
+const TYPE_DESC = {
+  INTJ:'你比别人更早看见终点，却常常一个人走在路上。',
+  INTP:'你活在想法的迷宫里，出口比别人想象的更多。',
+  ENTJ:'你天生知道如何让系统运转——以及如何让人们跟上你的节奏。',
+  ENTP:'你永远能找到反例，但这正是你让世界变得更聪明的方式。',
+  INFJ:'你能看见别人看不见的模式，也背负着别人感受不到的重量。',
+  INFP:'你用内心的罗盘导航，哪怕地图上根本没有这条路。',
+  ENFJ:'你是别人故事里的催化剂，推动他们成为更好的自己。',
+  ENFP:'你的热情是会传染的，你的可能性是无限的。',
+  ISTJ:'你用可靠性构建信任，用系统性赢得尊重。',
+  ISFJ:'你默默守护着身边每一个人，虽然他们不总是看见。',
+  ESTJ:'你知道事情该怎么做，也有勇气把它说出来并执行到底。',
+  ESFJ:'你是把人凝聚在一起的那股力量。',
+  ISTP:'你用最少的动作解决最复杂的问题，然后移向下一个。',
+  ISFP:'你用行动表达你的价值观，而不是用语言。',
+  ESTP:'你活在当下，快速行动，让规则为你服务。',
+  ESFP:'你把每个场景变成舞台，把每个人变成主角。'
+};
+const TYPE_FUNCTIONS = {
+  INTJ:['Ni','Te','Fi','Se'], INFJ:['Ni','Fe','Ti','Se'],
+  ISTJ:['Si','Te','Fi','Ne'], ISFJ:['Si','Fe','Ti','Ne'],
+  ENTJ:['Te','Ni','Se','Fi'], ENFJ:['Fe','Ni','Se','Ti'],
+  ESTJ:['Te','Si','Ne','Fi'], ESFJ:['Fe','Si','Ne','Ti'],
+  INTP:['Ti','Ne','Si','Fe'], INFP:['Fi','Ne','Si','Te'],
+  ISTP:['Ti','Se','Ni','Fe'], ISFP:['Fi','Se','Ni','Te'],
+  ENTP:['Ne','Ti','Fe','Si'], ENFP:['Ne','Fi','Te','Si'],
+  ESTP:['Se','Ti','Fe','Ni'], ESFP:['Se','Fi','Te','Ni']
+};
+const FUNC_COLORS = {
+  Ni:['#2665fd','#dce8ff'], Ne:['#2665fd','#dce8ff'],
+  Te:['#7C3AED','#f3eeff'], Ti:['#7C3AED','#f3eeff'],
+  Fe:['#0D9488','#e0f7f5'], Fi:['#0D9488','#e0f7f5'],
+  Se:['#b45309','#fffaeb'], Si:['#b45309','#fffaeb']
+};
+const FUNC_DESC = {
+  Ni:'内倾直觉：深邃的洞察与预测', Ne:'外倾直觉：发散的可能性探索',
+  Te:'外倾思考：严谨的逻辑与执行', Ti:'内倾思考：追求内部一致性',
+  Fe:'外倾情感：以团体和谐为先', Fi:'内倾情感：深层的价值观导向',
+  Se:'外倾感觉：专注当下的实际感知', Si:'内倾感觉：依赖过往经验参照'
+};
+const FUNC_ROLES = ['主导', '辅助', '第三', '劣势'];
+const FUNC_STRENGTHS = [90, 70, 48, 25];
+
+// ── Auth & load profile ───────────────────────────────────
+const { data: { user } } = await supabase.auth.getUser();
+if (!user) { window.location.href = 'login.html'; }
+
+const { data: profile } = await supabase
+  .from('user_profiles')
+  .select('mbti_type, mbti_scores, dominant_function, calibration_result')
+  .eq('id', user.id)
+  .single();
+
+document.getElementById('loading-screen').classList.add('hidden');
+
+if (!profile?.mbti_type) {
+  // No result yet
+  document.getElementById('hero-type').textContent = '?';
+  document.getElementById('hero-name').textContent = '尚未完成测评';
+  document.getElementById('hero-desc').textContent = '请先完成 20 题职场测评';
+  document.getElementById('dim-bars').innerHTML = '<p class="text-on-surface-variant text-body-md py-4 text-center">完成测评后此处展示维度分布</p>';
+  document.getElementById('func-stack').innerHTML = '<p class="text-on-surface-variant text-body-md py-4 text-center">完成测评后此处展示认知功能栈</p>';
+} else {
+  renderResult(profile);
+}
+
+function renderResult(profile) {
+  const type = profile.mbti_type;
+  document.getElementById('hero-type').textContent = type;
+  document.getElementById('hero-name').textContent = TYPE_NAMES[type] || type;
+  document.getElementById('hero-desc').textContent = TYPE_DESC[type] || '';
+
+  // Dimension bars
+  const scores = profile.mbti_scores;
+  const dims = [
+    { label1: '外向 E', label2: '内向 I', v1: scores?.EI?.E ?? 0, v2: scores?.EI?.I ?? 0, winner: type[0] },
+    { label1: '实感 S', label2: '直觉 N', v1: scores?.SN?.S ?? 0, v2: scores?.SN?.N ?? 0, winner: type[1] },
+    { label1: '思考 T', label2: '情感 F', v1: scores?.TF?.T ?? 0, v2: scores?.TF?.F ?? 0, winner: type[2] },
+    { label1: '判断 J', label2: '感知 P', v1: scores?.JP?.J ?? 0, v2: scores?.JP?.P ?? 0, winner: type[3] }
+  ];
+
+  document.getElementById('dim-bars').innerHTML = dims.map((d, i) => {
+    const total = d.v1 + d.v2 || 5;
+    const pct1 = Math.round((d.v1 / total) * 100);
+    const pct2 = 100 - pct1;
+    const w = d.winner === d.label1.slice(-1) ? 1 : 2;
+    const sep = i < 3 ? '<div class="border-t border-outline-variant/30"></div>' : '';
+    return `
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <span class="${w===1?'font-bold text-[#3f51b5]':'text-on-surface-variant'}">${d.label1}</span>
+          <span class="${w===2?'font-bold text-[#3f51b5]':'text-on-surface-variant'}">${d.label2}</span>
+        </div>
+        <div class="w-full h-1 bg-[#c5d3f0] rounded-full overflow-hidden flex">
+          <div class="h-full bg-primary" style="width:${pct1}%"></div>
+          <div class="h-full bg-transparent w-[5%]"></div>
+          <div class="h-full bg-primary" style="width:${pct2}%"></div>
+        </div>
+        <div class="text-right text-[10pt] text-tertiary">${w===1?pct1:pct2}%</div>
+      </div>${sep}`;
+  }).join('');
+
+  // Cognitive function stack
+  const stack = TYPE_FUNCTIONS[type] || [];
+  document.getElementById('func-stack').innerHTML = stack.map((fn, i) => {
+    const [color, bg] = FUNC_COLORS[fn] || ['#666','#eee'];
+    return `
+      <div class="flex items-center gap-4 ${i > 0 ? 'mt-6' : ''}">
+        <div class="flex-shrink-0 w-16 h-8 rounded-full flex items-center justify-center" style="background:${bg}">
+          <span class="font-bold text-sm" style="color:${color}">${FUNC_ROLES[i]} ${fn}</span>
+        </div>
+        <div class="flex-grow space-y-1">
+          <div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+            <div class="h-full" style="width:${FUNC_STRENGTHS[i]}%;background:${color}"></div>
+          </div>
+          <p class="text-[12pt] text-secondary">${FUNC_DESC[fn] || ''}</p>
+        </div>
+      </div>`;
+  }).join('');
+
+  // If calibration done, show calibration badge
+  if (profile.dominant_function) {
+    const caliBadge = `
+      <div class="mt-4 pt-4 border-t border-outline-variant/30 flex items-center gap-2">
+        <span class="material-symbols-outlined text-[16px] text-[#0D9488]">verified</span>
+        <span class="text-[12pt] text-[#0D9488]">已完成认知功能校准 · 主导功能 <strong>${profile.dominant_function}</strong></span>
+      </div>`;
+    document.getElementById('func-stack').insertAdjacentHTML('beforeend', caliBadge);
+  } else {
+    const guideCard = `
+      <div class="mt-4 pt-4 border-t border-outline-variant/30">
+        <p class="text-body-md text-on-surface-variant mb-3">完成 5 道校准题，获得更精准的认知功能档案</p>
+        <button onclick="window.location.href='calibration.html'" class="w-full py-2.5 border border-primary text-primary font-bold rounded-lg text-[14px] hover:bg-secondary-container/20 transition-colors">
+          去校准认知功能 →
+        </button>
+      </div>`;
+    document.getElementById('func-stack').insertAdjacentHTML('beforeend', guideCard);
+  }
+}
+
+// Entry animation
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('section').forEach((s, i) => {
+    s.style.opacity = '0'; s.style.transform = 'translateY(10px)';
+    s.style.transition = `all 0.5s ease-out ${i * 0.1}s`;
+    setTimeout(() => { s.style.opacity = '1'; s.style.transform = 'translateY(0)'; }, 50);
+  });
+});
+</script>
+</body></html>

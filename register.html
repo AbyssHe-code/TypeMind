@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>TypeMind - 注册</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f9f9ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .status-bar-time {
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: -0.3px;
+        }
+        /* iPhone 14 Pro Dynamic Island Area */
+        .dynamic-island-spacer {
+            height: 44px;
+        }
+        .input-focus-ring:focus-within {
+            box-shadow: 0 0 0 2px rgba(38, 101, 253, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#d7dae3",
+                        "surface-container-low": "#f1f3fc",
+                        "on-secondary-container": "#3f5881",
+                        "tertiary": "#964400",
+                        "surface-tint": "#005db8",
+                        "inverse-primary": "#aac7ff",
+                        "background": "#f9f9ff",
+                        "secondary-fixed-dim": "#aec7f7",
+                        "primary": "#005ab4",
+                        "tertiary-fixed": "#ffdbc9",
+                        "secondary-fixed": "#d6e3ff",
+                        "primary-fixed": "#d6e3ff",
+                        "error": "#ba1a1a",
+                        "on-background": "#181c22",
+                        "on-secondary-fixed-variant": "#2d476f",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e6e8f1",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#bd5700",
+                        "surface-container-highest": "#e0e2eb",
+                        "on-tertiary-fixed-variant": "#763400",
+                        "surface": "#f9f9ff",
+                        "surface-container": "#ebedf7",
+                        "on-primary-fixed-variant": "#00458d",
+                        "on-primary-container": "#fefcff",
+                        "on-tertiary-fixed": "#321200",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001b3e",
+                        "on-tertiary-container": "#fffbff",
+                        "on-secondary-fixed": "#001b3d",
+                        "primary-container": "#0a73e0",
+                        "outline-variant": "#c1c6d5",
+                        "surface-variant": "#e0e2eb",
+                        "secondary": "#465f88",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eef0fa",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb68c",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#b6d0ff",
+                        "inverse-surface": "#2d3037",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#717785",
+                        "on-surface-variant": "#414753",
+                        "on-surface": "#181c22",
+                        "primary-fixed-dim": "#aac7ff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "ios": "14px"
+                    },
+                    spacing: {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "margin": "24px",
+                        "ios-nav": "44px",
+                        "ios-input": "52px"
+                    },
+                    fontSize: {
+                        "ios-header": ["17px", { lineHeight: "22px", fontWeight: "600", letterSpacing: "-0.4px" }],
+                        "ios-body": ["15px", { lineHeight: "20px" }],
+                        "ios-label": ["13px", { lineHeight: "18px", fontWeight: "500", letterSpacing: "0.06em" }],
+                        "ios-helper": ["12px", { lineHeight: "16px" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-primary-container/30">
+<!-- Status Bar (iOS Mockup) -->
+<div class="fixed top-0 w-full z-[100] bg-background">
+<div class="flex justify-between items-center px-6 h-11">
+<div class="status-bar-time">9:41</div>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="material-symbols-outlined text-[22px]">battery_full</span>
+</div>
+</div>
+</div>
+<!-- Main Container (iPhone 14 Pro Dimensions Sim) -->
+<div class="relative min-h-screen flex flex-col max-w-[430px] mx-auto bg-background">
+<!-- Top Navigation Bar -->
+<header class="sticky top-11 z-50 h-[44px] flex items-center justify-between px-4 bg-background">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-start text-[#1e2a4a] active:opacity-50 transition-opacity" onclick="window.location.href='login.html'">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+<h1 class="text-ios-header text-[#1e2a4a]">创建账号</h1>
+<div class="w-10"></div> <!-- Placeholder for layout balance -->
+</header>
+<!-- Form Area -->
+<main class="flex-1 px-margin pt-[64px]">
+<!-- Intro Text -->
+<p class="text-ios-body text-[#475569] mb-6">设置你的账号信息</p>
+<form class="space-y-[20px]" id="register-form">
+<!-- Field 1: Username -->
+<div class="flex flex-col">
+<label class="text-ios-label text-[#475569] uppercase mb-xs ml-1">用户名</label>
+<div class="h-[52px] bg-[#e8eeff] rounded-ios flex items-center px-4 transition-all input-focus-ring">
+<span class="material-symbols-outlined text-[#475569] mr-3">person</span>
+<input id="username" class="bg-transparent border-none focus:ring-0 flex-1 text-ios-body placeholder:text-[#475569]/50 text-on-surface" placeholder="字母与数字组合，如 alex007" type="text" required>
+</div>
+<p class="text-ios-helper text-[#475569] mt-xs ml-1 opacity-80">
+                        · 只允许英文字母和数字 · 4–20 个字符
+                    </p>
+</div>
+<!-- Field 2: Password -->
+<div class="flex flex-col">
+<label class="text-ios-label text-[#475569] uppercase mb-xs ml-1">密码</label>
+<div class="h-[52px] bg-[#e8eeff] rounded-ios flex items-center px-4 transition-all input-focus-ring">
+<span class="material-symbols-outlined text-[#475569] mr-3">lock</span>
+<input class="bg-transparent border-none focus:ring-0 flex-1 text-ios-body placeholder:text-[#475569]/50 text-on-surface" id="password" placeholder="至少 8 位" type="password" required>
+<button class="text-[#475569]/60 active:scale-90 transition-transform" onclick="togglePassword('password', this)" type="button">
+<span class="material-symbols-outlined">visibility_off</span>
+</button>
+</div>
+<!-- Strength Indicator -->
+<div class="flex gap-1.5 mt-2 px-1">
+<div class="h-[3px] flex-1 bg-[#c5d3f0] rounded-full"></div>
+<div class="h-[3px] flex-1 bg-[#c5d3f0] rounded-full"></div>
+<div class="h-[3px] flex-1 bg-[#c5d3f0] rounded-full"></div>
+<div class="h-[3px] flex-1 bg-[#c5d3f0] rounded-full"></div>
+</div>
+</div>
+<!-- Field 3: Confirm Password -->
+<div class="flex flex-col">
+<label class="text-ios-label text-[#475569] uppercase mb-xs ml-1">确认密码</label>
+<div class="h-[52px] bg-[#e8eeff] rounded-ios flex items-center px-4 transition-all input-focus-ring">
+<span class="material-symbols-outlined text-[#475569] mr-3">lock</span>
+<input class="bg-transparent border-none focus:ring-0 flex-1 text-ios-body placeholder:text-[#475569]/50 text-on-surface" id="confirm-password" placeholder="再次输入密码" type="password" required>
+<button class="text-[#475569]/60 active:scale-90 transition-transform" onclick="togglePassword('confirm-password', this)" type="button">
+<span class="material-symbols-outlined">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="pt-sm">
+<button class="w-full h-[52px] bg-[#2665fd] text-white rounded-ios text-[17px] font-semibold active:scale-[0.98] active:brightness-95 transition-all shadow-lg shadow-primary/20" type="submit" id="register-btn">
+                        注册
+                    </button>
+                    <!-- Error Message Display -->
+                    <p id="error-message" class="text-error text-ios-helper text-center mt-2 hidden"></p>
+</div>
+<!-- Terms & Conditions -->
+<div class="pt-2 text-center">
+<p class="text-ios-helper text-[#475569]">
+                        注册即代表你同意我们的 
+                        <a class="text-[#2665fd] font-medium hover:underline" href="#">服务条款</a> 与 
+                        <a class="text-[#2665fd] font-medium hover:underline" href="#">隐私政策</a>
+</p>
+</div>
+</form>
+</main>
+<!-- Bottom Home Indicator -->
+<footer class="h-8 flex justify-center items-end pb-2">
+<div class="w-[134px] h-[5px] bg-on-surface/20 rounded-full"></div>
+</footer>
+</div>
+<script>
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon = btn.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerText = 'visibility';
+            } else {
+                input.type = 'password';
+                icon.innerText = 'visibility_off';
+            }
+        }
+
+        // Atmospheric micro-interaction: Password strength simulation
+        const pwInput = document.getElementById('password');
+        const indicators = document.querySelectorAll('.rounded-full.bg-\\[\\#c5d3f0\\]');
+        
+        pwInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            indicators.forEach((bar, idx) => {
+                bar.style.backgroundColor = '#c5d3f0'; // reset
+                if (val.length > 0 && idx === 0) bar.style.backgroundColor = '#ff5f52'; // weak
+                if (val.length > 4 && idx <= 1) bar.style.backgroundColor = '#ffc107'; // medium
+                if (val.length > 8 && idx <= 2) bar.style.backgroundColor = '#2665fd'; // good
+                if (val.length > 12 && idx <= 3) bar.style.backgroundColor = '#4caf50'; // strong
+            });
+        });
+    </script>
+    <script type="module">
+        import { supabase } from './src/supabase.js';
+
+        const registerForm = document.getElementById('register-form');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const errorMsg = document.getElementById('error-message');
+        const registerBtn = document.getElementById('register-btn');
+
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            // 基础校验
+            if (password !== confirmPassword) {
+                showError('两次输入的密码不一致');
+                return;
+            }
+            if (password.length < 8) {
+                showError('密码长度不能少于8位');
+                return;
+            }
+            let email = username;
+            let displayUsername = username;
+            
+            if (username.includes('@')) {
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username)) {
+                    showError('邮箱格式不正确');
+                    return;
+                }
+                displayUsername = username.split('@')[0];
+            } else {
+                if (!/^[a-zA-Z0-9_.]+$/.test(username) || username.length < 3 || username.length > 30) {
+                    showError('用户名格式不正确');
+                    return;
+                }
+                email = `${username}@example.com`;
+            }
+
+            // UI 状态更新
+            registerBtn.disabled = true;
+            registerBtn.innerText = '注册中...';
+            errorMsg.classList.add('hidden');
+
+            try {
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            username: displayUsername
+                        }
+                    }
+                });
+
+                if (error) throw error;
+
+                // 注册成功，跳转到登录页（或直接跳转首页）
+                alert('注册成功！');
+                window.location.href = 'login.html';
+                
+            } catch (error) {
+                console.error('Registration error:', error);
+                showError(error.message || '注册失败，请重试');
+            } finally {
+                registerBtn.disabled = false;
+                registerBtn.innerText = '注册';
+            }
+        });
+
+        function showError(msg) {
+            errorMsg.innerText = msg;
+            errorMsg.classList.remove('hidden');
+        }
+    </script>
+
+
+</body></html>

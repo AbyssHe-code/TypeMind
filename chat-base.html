@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI 职场陪伴 - 职场人格</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .chat-container {
+            height: calc(100vh - 64px - 140px);
+        }
+        .glass-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .user-bubble {
+            border-radius: 16px 4px 16px 16px;
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(38, 101, 253, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#005db8",
+                      "surface-container-low": "#f1f3fc",
+                      "surface": "#f9f9ff",
+                      "inverse-primary": "#aac7ff",
+                      "on-secondary-fixed-variant": "#2d476f",
+                      "secondary-fixed": "#d6e3ff",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#2d3037",
+                      "surface-bright": "#f9f9ff",
+                      "primary-container": "#0a73e0",
+                      "on-tertiary-container": "#fffbff",
+                      "on-primary-fixed": "#001b3e",
+                      "outline-variant": "#c1c6d5",
+                      "on-tertiary-fixed": "#321200",
+                      "surface-variant": "#e0e2eb",
+                      "surface-container-high": "#e6e8f1",
+                      "secondary": "#465f88",
+                      "on-background": "#181c22",
+                      "inverse-on-surface": "#eef0fa",
+                      "surface-dim": "#d7dae3",
+                      "on-primary-container": "#fefcff",
+                      "on-secondary-container": "#3f5881",
+                      "on-secondary-fixed": "#001b3d",
+                      "secondary-fixed-dim": "#aec7f7",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#aac7ff",
+                      "tertiary-fixed": "#ffdbc9",
+                      "surface-container-highest": "#e0e2eb",
+                      "secondary-container": "#b6d0ff",
+                      "primary-fixed": "#d6e3ff",
+                      "outline": "#717785",
+                      "surface-container": "#ebedf7",
+                      "on-surface": "#181c22",
+                      "on-primary-fixed-variant": "#00458d",
+                      "tertiary-fixed-dim": "#ffb68c",
+                      "on-error-container": "#93000a",
+                      "primary": "#005ab4",
+                      "background": "#f9f9ff",
+                      "on-tertiary-fixed-variant": "#763400",
+                      "tertiary": "#964400",
+                      "on-surface-variant": "#414753"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "base": "8px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "margin": "24px",
+                      "md": "16px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#f0f4ff] text-on-surface flex flex-col min-h-screen">
+<!-- Top AppBar (from JSON pattern) -->
+<header class="w-full top-0 sticky z-50 bg-surface/80 glass-blur shadow-sm flex items-center justify-between px-margin py-3 border-b border-outline-variant/30">
+<div class="flex items-center gap-4">
+<button class="text-secondary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[28px]">chevron_left</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-semibold text-[16px] text-[#111420]">AI 职场陪伴</h1>
+<span class="text-[12px] text-[#1978E5] font-medium flex items-center gap-1">
+<span class="text-[10px]">⚡</span> 刚刚发生了一件事
+                </span>
+</div>
+</div>
+<div class="bg-[#dce8ff] px-3 py-1 rounded-full">
+<span class="text-[#2665fd] text-[11px] font-bold tracking-wider">INTJ</span>
+</div>
+</header>
+<!-- Chat Area -->
+<main class="flex-grow overflow-y-auto px-margin pt-6 pb-20 space-y-6 chat-container">
+<!-- Context Header -->
+<div class="flex justify-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#1978E5]/20 bg-inverse-surface text-surface text-[12px] font-medium">
+<span class="text-[#1978E5]">⚡</span> 刚刚发生了一件事
+            </div>
+</div>
+<!-- AI Welcome Message -->
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-gradient-to-br from-[#6366f1] to-[#a855f7] flex items-center justify-center text-white font-bold text-xs shadow-md">
+                AI
+            </div>
+<div class="bg-[#dfe8ff] border border-[#2665fd]/10 p-4 rounded-xl rounded-tl-none max-w-[85%] shadow-sm">
+<p class="font-body-md text-on-surface leading-relaxed">
+                    你好 👋 我记得你是 <span class="font-bold text-primary">INTJ · 战略家</span>。<br/><br/>
+                    有件事刚刚发生？把情况说给我——越具体越好。是和谁之间的事？
+                </p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex justify-end">
+<div class="user-bubble bg-[#2665fd] text-white p-4 max-w-[80%] shadow-md">
+<p class="text-[14px] leading-relaxed">
+                    我刚才在周会上提出了项目优化的技术方案，但我的主管（他做事非常追求效率和结果）直接打断了我，说“现在不是讨论技术细节的时候，告诉我们什么时候能上线”。我觉得被冒犯了，而且他的决策可能会留下隐患。
+                </p>
+</div>
+</div>
+<!-- AI Inference & Structured Response -->
+<div class="space-y-4">
+<!-- Inference Badge -->
+<div class="flex justify-start pl-13">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-[#fffaeb] border border-[#f59e0b]/30 rounded-full text-[#b45309] text-[12px] font-medium shadow-sm">
+<span class="material-symbols-outlined text-[16px]">psychology_alt</span>
+                    🔮 推测对方类型：ESTJ · 总经理
+                </div>
+</div>
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-gradient-to-br from-[#6366f1] to-[#a855f7] flex items-center justify-center text-white font-bold text-xs shadow-md">
+                    AI
+                </div>
+<div class="flex-grow space-y-3 max-w-[85%]">
+<!-- Section 1: Root Cause -->
+<div class="bg-[#eef2ff] border-l-[3px] border-[#2665fd] p-4 rounded-r-lg shadow-sm">
+<h4 class="text-[14px] font-bold text-primary mb-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                            🔍 根因分析 · 认知功能层
+                        </h4>
+<p class="text-on-surface-variant text-[13px] leading-relaxed">
+                            这是典型的 <span class="font-semibold">Ni (内向直觉)</span> 与 <span class="font-semibold">Te (外向思考)</span> 的冲突。你关注长远的逻辑自洽和隐患，而 ESTJ 倾向于“行动优先”的 Te 主导逻辑，他们会将“讨论细节”视为对执行速度的阻碍。
+                        </p>
+</div>
+<!-- Section 2: Perspective -->
+<div class="bg-[#f5f3ff] border-l-[3px] border-[#8b5cf6] p-4 rounded-r-lg shadow-sm">
+<h4 class="text-[14px] font-bold text-[#7c3aed] mb-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                            👁 对方视角解读
+                        </h4>
+<p class="text-on-surface-variant text-[13px] leading-relaxed">
+                            对他而言，会议的目标是“确认进度”。当你的描述进入深层技术域时，他会产生失去掌控的感觉，通过“粗暴打断”来拉回他熟悉的节奏。这并非针对你个人，而是他对效率的防御性反应。
+                        </p>
+</div>
+<!-- Section 3: Actionable Advice -->
+<div class="bg-[#f0fdfa] border-l-[3px] border-[#0d9488] p-4 rounded-r-lg shadow-sm">
+<h4 class="text-[14px] font-bold text-[#0f766e] mb-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">task_alt</span>
+                            ✅ 可操作建议
+                        </h4>
+<ul class="text-on-surface-variant text-[13px] space-y-2 mt-2">
+<li class="flex items-start gap-2">
+<span class="text-[#0d9488] font-bold">→</span>
+<span><span class="font-semibold">先予后取：</span>下次先给上线日期，再补充“为了保证这个日期，我需要处理以下隐患”。</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-[#0d9488] font-bold">→</span>
+<span><span class="font-semibold">私下同步：</span>会议后发送一份极简的 Bullet points 邮件，强调风险成本。</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-[#0d9488] font-bold">→</span>
+<span><span class="font-semibold">职场话术：</span>“你说得对，进度最重要。我想确保方案稳健，避免后期返工影响上线。”</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Input Container -->
+<div class="fixed bottom-0 w-full bg-white/95 glass-blur border-t border-outline-variant/30 pb-safe z-50">
+<!-- Memory Indicator -->
+<div class="px-margin py-2 flex items-center gap-3 overflow-x-auto no-scrollbar">
+<span class="text-[12px] text-tertiary whitespace-nowrap font-medium">🧠 AI 已记录：</span>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-[#eef2ff] text-[#2665fd] text-[11px] rounded-full border border-[#2665fd]/20 whitespace-nowrap">我的类型: INTJ</span>
+<span class="px-3 py-1 bg-[#fffaeb] text-[#b45309] text-[11px] rounded-full border border-[#f59e0b]/30 shadow-[0_0_8px_rgba(245,158,11,0.1)] whitespace-nowrap">同事: ESTJ 推断</span>
+</div>
+</div>
+<!-- Input Field -->
+<div class="px-margin pt-2 pb-6 flex items-center gap-3">
+<div class="flex-grow relative">
+<input class="w-full bg-[#dfe8ff] border-[1.5px] border-[#2665fd]/20 rounded-full px-5 py-3 text-[14px] focus:outline-none focus:border-[#2665fd]/50 transition-all placeholder:text-on-surface-variant/60" placeholder="描述你的情况……" type="text"/>
+</div>
+<button class="w-12 h-12 bg-[#2665fd] rounded-full flex items-center justify-center text-white shadow-[0_4px_12px_rgba(38,101,253,0.3)] active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[24px]">arrow_upward</span>
+</button>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-40 overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#dce8ff] to-transparent blur-3xl"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#eef2ff] to-transparent blur-3xl"></div>
+</div>
+<script>
+        // Micro-interaction for memory chips
+        document.querySelectorAll('.rounded-full').forEach(chip => {
+            chip.addEventListener('click', () => {
+                chip.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    chip.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+
+        // Simple scroll to bottom
+        const chatArea = document.querySelector('main');
+        chatArea.scrollTop = chatArea.scrollHeight;
+    </script>
+</body></html>
